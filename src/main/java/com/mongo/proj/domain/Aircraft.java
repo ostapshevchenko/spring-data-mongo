@@ -3,9 +3,9 @@ package com.mongo.proj.domain;
 public class Aircraft {
 
     private String model;
-    private String nbSeats;
+    private int nbSeats;
 
-    public Aircraft(String model, String nbSeats) {
+    public Aircraft(String model, int nbSeats) {
         this.model = model;
         this.nbSeats = nbSeats;
     }
@@ -18,11 +18,11 @@ public class Aircraft {
         this.model = model;
     }
 
-    public String getNbSeats() {
+    public int getNbSeats() {
         return nbSeats;
     }
 
-    public void setNbSeats(String nbSeats) {
+    public void setNbSeats(int nbSeats) {
         this.nbSeats = nbSeats;
     }
 }

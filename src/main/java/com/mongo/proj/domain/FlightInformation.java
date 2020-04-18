@@ -2,7 +2,6 @@ package com.mongo.proj.domain;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
-import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.index.TextIndexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
@@ -108,5 +107,29 @@ public class FlightInformation {
 
     public void setCreatedAt(LocalDate createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "FlightInformation{" +
+                "id='" + id + '\'' +
+                ", departureCity='" + departureCity + '\'' +
+                ", destinationCity='" + destinationCity + '\'' +
+                ", description='" + description + '\'' +
+                ", flightType=" + flightType +
+                ", isDelayed=" + isDelayed +
+                ", duration=" + duration +
+                ", departureDate=" + departureDate +
+                ", aircraft=" + aircraft +
+                ", createdAt=" + createdAt +
+                '}';
     }
 }

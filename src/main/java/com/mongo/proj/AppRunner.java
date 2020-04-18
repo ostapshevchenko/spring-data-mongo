@@ -1,24 +1,18 @@
 package com.mongo.proj;
 
-import com.mongo.proj.domain.FlightInformation;
-import com.mongo.proj.full.text.search.Profile;
+import com.mongo.proj.repo.FlightInfoRepository;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.core.query.TextCriteria;
-import org.springframework.data.mongodb.core.query.TextQuery;
 import org.springframework.stereotype.Component;
-
-import javax.xml.soap.Text;
-import java.util.List;
 
 @Component
 public class AppRunner implements CommandLineRunner {
 
+    private final FlightInfoRepository flightInfoRepository;
     private MongoTemplate mongoTemplate;
 
-    public AppRunner(MongoTemplate mongoTemplate) {
+    public AppRunner(FlightInfoRepository flightInfoRepository, MongoTemplate mongoTemplate) {
+        this.flightInfoRepository = flightInfoRepository;
         this.mongoTemplate = mongoTemplate;
     }
 
@@ -45,8 +39,15 @@ public class AppRunner implements CommandLineRunner {
 //        List<Profile> profiles = mongoTemplate.find(query, Profile.class);
 //        System.out.println(profiles);
 
-
+        printByMinNbSeats(200);
 
         System.out.println("app started..");
+    }
+
+    private void printByMinNbSeats(int nbSeats) {
+        System.out.println("------------------------------------");
+        System.out.println(flightInfoRepository.findByMinAircraftNbSeats(nbSeats));
+        System.out.println("------------------------------------");
+
     }
 }
